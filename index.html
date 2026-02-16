@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator - Text to Image</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h1>AI Image Generator</h1>
+            </div>
+            <p class="subtitle">Transform your words into stunning visuals</p>
+        </header>
+
+        <main class="main-content">
+            <div class="generator-section">
+                <div class="input-container">
+                    <div class="prompt-wrapper">
+                        <textarea 
+                            id="promptInput" 
+                            class="prompt-input" 
+                            placeholder="Describe the image you want to generate... (e.g., 'A serene sunset over mountains with vibrant colors')"
+                            rows="3"
+                        ></textarea>
+                        <div class="input-actions">
+                            <div class="style-selector">
+                                <label for="styleSelect">Style:</label>
+                                <select id="styleSelect" class="style-select">
+                                    <option value="realistic">Realistic</option>
+                                    <option value="artistic">Artistic</option>
+                                    <option value="anime">Anime</option>
+                                    <option value="fantasy">Fantasy</option>
+                                    <option value="cyberpunk">Cyberpunk</option>
+                                    <option value="minimalist">Minimalist</option>
+                                </select>
+                            </div>
+                            <div class="size-selector">
+                                <label for="sizeSelect">Size:</label>
+                                <select id="sizeSelect" class="size-select">
+                                    <option value="512x512">512x512</option>
+                                    <option value="768x768">768x768</option>
+                                    <option value="1024x1024">1024x1024</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="generateBtn" class="generate-btn">
+                        <span class="btn-text">Generate Image</span>
+                        <span class="btn-loader" style="display: none;">
+                            <span class="spinner"></span>
+                            Generating...
+                        </span>
+                    </button>
+                </div>
+
+                <div id="imageContainer" class="image-container">
+                    <div class="placeholder-content">
+                        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.5 10C9.32843 10 10 9.32843 10 8.5C10 7.67157 9.32843 7 8.5 7C7.67157 7 7 7.67157 7 8.5C7 9.32843 7.67157 10 8.5 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 15L16 10L5 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p>Your generated image will appear here</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Multiple Styles</h3>
+                    <p>Choose from various artistic styles</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Generation</h3>
+                    <p>Get results in seconds</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Download Images</h3>
+                    <p>Save your creations instantly</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive</h3>
+                    <p>Works on all devices</p>
+                </div>
+            </div>
+
+            <div id="historySection" class="history-section" style="display: none;">
+                <h2>Generation History</h2>
+                <div id="historyGrid" class="history-grid"></div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Powered by AI • Built with ❤️</p>
+        </footer>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
